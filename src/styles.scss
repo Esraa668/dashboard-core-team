@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* styles.scss or component-specific stylesheet */
+.status-Delivered {
+  background-color: #eafae1;
+  color: rgb(81, 172, 124);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.status-Process {
+  color: rgb(198, 136, 69);
+  background-color: rgb(254, 242, 229);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.status-Canceled {
+  color: white;
+  background-color: rgb(188, 129, 129);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.status-label {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.btn {
+  background-color: blueviolet;
+}
+.icon {
+  font-size: 15px;
+  color: rgb(181, 61, 61);
+}
+.iconEdit {
+  color: rgb(122, 74, 165);
+}
+.searchIcon {
+  color: gray;
+}
+.status {
+  border-radius: 20px;
+}
+/* General Layout */
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.entries-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.entries {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.add-product {
+  display: flex;
+  justify-content: flex-end;
+}
+.cancel {
+  border-color: blue($color: #000000);
+  color: rgb(85, 112, 241);
+}
+.con {
+  background-color: rgb(85, 112, 241);
+}
+.table-container {
+  margin-top: 2rem;
+}
+.bg {
+  color: gray;
+  border-radius: 15px;
+  padding: 5px;
+  background-color: rgb(246, 247, 251);
+}
+.continue {
+  color: red;
+}
+/* Make elements responsive */
+@media (min-width: 640px) {
+  .top-section {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .entries-search {
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+
+  .entries,
+  .search-bar {
+    width: auto;
+  }
+
+  .add-product {
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .entries,
+  .search-bar {
+    width: 100%;
+  }
+
+  .add-product {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

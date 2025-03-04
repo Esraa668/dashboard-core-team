@@ -1,0 +1,91 @@
+<section class="p-6 bg-gray-100 min-h-screen" routerLink="/home">
+    <div class="top-section">
+        <div class="entries-search">
+            <div class="entries">
+                <label for="entries" class="mr-2 text-gray-700">Show</label>
+                <select id="entries"
+                    class="border border-gray-300 rounded-md text-gray-700 p-1 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <option>10</option>
+                    <option>20</option>
+                    <option>30</option>
+                </select>
+                <span class="ml-2 text-gray-700">entries</span>
+            </div>
+            <div
+                class="flex items-center border border-gray-300 rounded-md flex-grow sm:flex-grow-0 w-full sm:w-auto search-bar">
+                <i class="fa-solid fa-magnifying-glass px-2 searchIcon"></i>
+                <input type="text" placeholder="Search..." class="w-full " />
+            </div>
+        </div>
+
+        <div class="add-product">
+            <button class="btn text-white flex items-center gap-2 px-4 py-2 rounded-lg" (click)="add()">
+                <i class="fa-solid fa-plus"></i> Add Product
+            </button>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs uppercase bg-gray-200 text-gray-700">
+                <tr>
+                    <th scope="col" class="px-4 py-3">Tracking ID</th>
+                    <th scope="col" class="px-4 py-3">Product</th>
+                    <th scope="col" class="px-4 py-3">Customer</th>
+                    <th scope="col" class="px-4 py-3">Date</th>
+                    <th scope="col" class="px-4 py-3">Amount</th>
+                    <th scope="col" class="px-4 py-3">Payment Mode</th>
+                    <th scope="col" class="px-4 py-3">Status</th>
+                    <th scope="col" class="px-4 py-3">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of list; let i = index"
+                    [ngStyle]="{'background-color': i % 2 == 0 ? 'rgb(247, 246, 254)' : 'white'}">
+                    <td class="px-4 py-3">{{ product.trackingId }}</td>
+                    <td class="px-4 py-3 flex items-center">
+                        <img [src]="'https://ctrl-p.runasp.net/' + product.url[0]" [alt]="product.name"
+                            class="shadow-md rounded-lg w-16 h-16 object-cover" />
+                    </td>
+                    <td class="px-4 py-3">{{ product.name }}</td>
+                    <td class="px-4 py-3">{{ product.date }}</td>
+                    <td class="px-4 py-3">{{ product.price | currency }}</td>
+                    <td class="px-4 py-3">{{ product.paymentMode }}</td>
+                    <td class="px-4 py-3">
+                        <span [ngClass]="getStatusClass(product.inventoryStatus)" class="status">
+                            {{ product.inventoryStatus }}
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 flex items-center gap-2">
+                        <button class="text-blue-600 hover:text-blue-800" title="Edit">
+                            <i class="fa-regular fa-pen-to-square iconEdit"></i>
+                        </button>
+                        <button class="text-red-600 hover:text-red-800" title="Delete">
+                            <i class="fa-solid fa-trash icon"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="flex justify-between items-center p-4 bg-gray-50 border-t">
+            <span class="text-sm text-gray-700">
+                Showing 1 to 10 of {{ list.length }} entries
+            </span>
+            <div class="flex gap-1">
+                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">
+                    Previous
+                </button>
+                <button class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    1
+                </button>
+                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">
+                    2
+                </button>
+                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
